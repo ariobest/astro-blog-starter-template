@@ -13,6 +13,7 @@
     "start": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
+    "tailwindcss": "^3.4.17"
     "@astrojs/react": "^4.4.2",
     "@supabase/supabase-js": "^2.75.0",
     "@tanstack/react-query": "^5.90.5",
