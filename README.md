@@ -1,64 +1,73 @@
-# Astro Starter Kit: Blog
+# Ario Scripts
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+Ario Scripts is a Roblox Studio/Luau script catalog and developer community platform built with React, Vite, TypeScript, Express, and Supabase.
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Product scope
 
-<!-- dash-content-start -->
+- Public Roblox Studio/Luau script catalog
+- Games and categories
+- Developer profiles
+- Supabase Auth accounts
+- User dashboard and script submissions
+- Favorites and notifications
+- Moderation workflow
+- Badges and achievements
+- Admin analytics and audit logging
+- Secure server-side authorization
+- PostgreSQL/RLS persistence
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+This project is for legitimate Roblox development and educational resources. It does not provide exploit loaders, anti-cheat bypasses, credential theft, or other security-bypass functionality.
 
-Features:
+## Environment
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
+Configure these in Replit Secrets or the deployment environment:
 
-<!-- dash-content-end -->
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY` only if a trusted server-side operation genuinely requires it; never expose it to the browser.
 
-## Getting Started
+Do not commit secrets to Git.
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## Development
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+npm install
+npm run dev
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+The development command starts Vite and the Express API. The API listens on `PORT` (default 3000).
 
-## 🚀 Project Structure
+## Production
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```bash
+npm run build
+npm start
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Supabase setup
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+1. Open the existing Supabase project.
+2. Review the existing schema before applying migrations.
+3. Apply `supabase/migrations/0002_ario_scripts_security.sql` in a controlled environment first.
+4. Configure Supabase Auth email verification/password reset.
+5. Configure Google OAuth only if desired.
+6. Configure Storage buckets and owner-scoped policies for avatars, game images, script thumbnails, and announcements.
+7. Create the initial administrator manually through a trusted database procedure or controlled SQL operation. Never promote the first registered user automatically.
+8. Test anonymous, user, moderator, and administrator permissions separately.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Security notes
 
-## 🧞 Commands
+- Browser code uses only the Supabase publishable key.
+- Private script source should be delivered only after server-side authorization.
+- User-submitted Luau is treated as untrusted content and is never executed by the web server.
+- Admin actions must be enforced on the server/database, not by hidden UI controls.
+- RLS must remain enabled on browser-exposed tables.
+- Do not expose service-role credentials, access tokens, passwords, or private moderation data.
 
-All commands are run from the root of the project, from a terminal:
+## API health
 
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
+`GET /api/health` verifies configured Supabase connectivity without returning secrets.
 
-## 👀 Want to learn more?
+## Status
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+The repository contains the Ario Scripts application foundation and real Supabase-backed workflows. Before production launch, run the project in Replit, apply and test the database migration against a controlled environment, configure Storage/Auth, and run the TypeScript/build checks.
