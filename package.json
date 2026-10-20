@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "react-router-dom": "^7.18.4"
     "@astrojs/react": "^4.4.2",
     "@supabase/supabase-js": "^2.118.0",
     "astro": "^5.18.2",
