@@ -1,97 +1,15 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import ArioClientApp from '../components/ArioClientApp';
 ---
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="hero">
-				<p class="eyebrow">ROBLOX STUDIO • LUAU • GAME DEV</p>
-				<h1>Build better Roblox games with <span>Luau.</span></h1>
-				<p class="intro">
-					A practical hub for Roblox scripting: beginner-friendly guides, reusable code patterns,
-					and examples you can take straight into Studio.
-				</p>
-				<div class="actions">
-					<a class="button primary" href="/blog">Explore scripting guides</a>
-					<a class="button" href="/about">About the project</a>
-				</div>
-			</section>
-
-			<section class="grid" aria-label="Scripting topics">
-				<article>
-					<div class="icon">01</div>
-					<h2>Luau Fundamentals</h2>
-					<p>Variables, functions, conditionals, loops, tables, and clean code structure.</p>
-				</article>
-				<article>
-					<div class="icon">02</div>
-					<h2>Roblox APIs</h2>
-					<p>Learn how Services, Instances, events, RemoteEvents, and ModuleScripts fit together.</p>
-				</article>
-				<article>
-					<div class="icon">03</div>
-					<h2>Game Systems</h2>
-					<p>Build inventories, leaderboards, shops, rounds, NPC behavior, and reusable systems.</p>
-				</article>
-			</section>
-
-			<section class="code-section">
-				<div>
-					<p class="eyebrow">FIRST SCRIPT</p>
-					<h2>Start small. Ship something fun.</h2>
-					<p>
-						Roblox uses Luau, a fast and gradually typed language derived from Lua. Put a Script in
-						ServerScriptService and start experimenting.
-					</p>
-				</div>
-				<pre><code>local Players = game:GetService("Players")
-
-Players.PlayerAdded:Connect(function(player)
-    print("Welcome, " .. player.Name .. "!")
-end)</code></pre>
-			</section>
-
-			<section class="next">
-				<p class="eyebrow">WHAT'S NEXT?</p>
-				<h2>Learn a concept, then build with it.</h2>
-				<p>Browse the guides for focused examples and turn each idea into a working Roblox system.</p>
-				<a href="/blog">Read the guides →</a>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Ario Scripts — a Roblox Studio and Luau developer script platform." />
+    <title>Ario Scripts</title>
+  </head>
+  <body>
+    <ArioClientApp client:load />
+  </body>
 </html>
-
-<style>
-	main { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
-	.hero { max-width: 820px; padding: 3rem 0 5rem; }
-	.eyebrow { font-size: .78rem; font-weight: 800; letter-spacing: .14em; color: var(--accent); margin-bottom: 1rem; }
-	h1 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .95; letter-spacing: -.055em; margin: 0 0 1.5rem; }
-	h1 span { color: var(--accent); }
-	.intro { font-size: 1.25rem; line-height: 1.7; max-width: 700px; }
-	.actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 2rem; }
-	.button { display: inline-block; padding: .8rem 1.1rem; border: 2px solid var(--black); border-radius: 10px; text-decoration: none; font-weight: 700; }
-	.button.primary { background: var(--black); color: white; }
-	.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0 6rem; }
-	.grid article { border: 1px solid #ddd; border-radius: 16px; padding: 1.5rem; background: white; }
-	.icon { font-weight: 900; color: var(--accent); margin-bottom: 2rem; }
-	.grid h2, .code-section h2, .next h2 { margin: 0 0 .7rem; }
-	.grid p, .code-section p, .next p { line-height: 1.7; }
-	.code-section { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center; padding: 3rem; border-radius: 20px; background: #f4f4f4; margin-bottom: 5rem; }
-	pre { overflow-x: auto; padding: 1.5rem; border-radius: 12px; background: #171717; color: #f5f5f5; line-height: 1.6; }
-	.next { text-align: center; max-width: 650px; margin: 0 auto; }
-	.next a { font-weight: 800; color: var(--accent); }
-	@media (max-width: 760px) {
-		.grid, .code-section { grid-template-columns: 1fr; }
-		.code-section { padding: 1.5rem; }
-	}
-</style>
