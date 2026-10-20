@@ -1,37 +1,24 @@
 {
   "name": "ario-scripts",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=22"
-  },
   "scripts": {
-    "dev": "astro dev --host 0.0.0.0",
+    "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview --host 0.0.0.0",
-    "start": "astro preview --host 0.0.0.0"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "tailwindcss": "^3.4.17"
     "@astrojs/react": "^4.4.2",
-    "@supabase/supabase-js": "^2.75.0",
-    "@tanstack/react-query": "^5.90.5",
-    "astro": "^5.14.8",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "framer-motion": "^12.23.24",
-    "lucide-react": "^0.468.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.4",
-    "zod": "^4.1.12"
+    "@supabase/supabase-js": "^2.118.0",
+    "astro": "^5.18.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.5",
-    "@types/node": "^22.15.33",
-    "@types/react": "^19.1.14",
-    "@types/react-dom": "^19.1.9"
+    "@types/node": "^22.20.5",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6"
   }
 }
