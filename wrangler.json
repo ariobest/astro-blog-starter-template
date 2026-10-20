@@ -1,14 +1,6 @@
 {
-	"name": "astro-blog-starter-template",
-	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
-	"main": "./dist/_worker.js/index.js",
-	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
-	},
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "astro-blog-starter-template",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-20"
 }
