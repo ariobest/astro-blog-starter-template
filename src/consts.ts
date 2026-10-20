@@ -1,5 +1,3 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = "Astro Blog";
-export const SITE_DESCRIPTION = "Welcome to my website!";
+// Global site configuration.
+export const SITE_TITLE = "Roblox Scripting Hub";
+export const SITE_DESCRIPTION = "Practical Roblox Studio scripting guides, Luau examples, and game-development tips.";
