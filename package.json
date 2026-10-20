@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "concurrently \"vite --host 0.0.0.0\" \"tsx server/index.ts\"",
     "build": "tsc -b && vite build",
-    "start": "node dist-server/index.js",
-    "server": "tsx server/index.ts",
+    "start": "tsx server/index.ts",
     "check": "tsc -b --pretty false"
   },
   "dependencies": {
