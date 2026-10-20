@@ -3,13 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview --host 0.0.0.0",
-    "start": "astro preview --host 0.0.0.0",
-    "check": "astro check"
+    "start": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
