@@ -1,73 +1,58 @@
 # Ario Scripts
 
-Ario Scripts is a Roblox Studio/Luau script catalog and developer community platform built with React, Vite, TypeScript, Express, and Supabase.
+Ario Scripts is a Roblox Studio/Luau script catalog and developer community platform. The web app is a React application mounted through Astro and built as a static site for Cloudflare Pages, with Supabase providing authentication and data persistence.
 
-## Product scope
+## Cloudflare Pages
 
-- Public Roblox Studio/Luau script catalog
-- Games and categories
-- Developer profiles
-- Supabase Auth accounts
-- User dashboard and script submissions
-- Favorites and notifications
-- Moderation workflow
-- Badges and achievements
-- Admin analytics and audit logging
-- Secure server-side authorization
-- PostgreSQL/RLS persistence
+Use these build settings:
 
-This project is for legitimate Roblox development and educational resources. It does not provide exploit loaders, anti-cheat bypasses, credential theft, or other security-bypass functionality.
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+- **Node.js:** 22 or newer
+- **Root directory:** `/`
 
-## Environment
+The repository contains `wrangler.toml` with the Pages output directory and `public/_redirects` for the React Router SPA fallback.
 
-Configure these in Replit Secrets or the deployment environment:
+Set these Cloudflare Pages environment variables:
 
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_PUBLISHABLE_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY` only if a trusted server-side operation genuinely requires it; never expose it to the browser.
 
-Do not commit secrets to Git.
+Only browser-safe Supabase configuration belongs in `VITE_*` variables. Never expose a Supabase service-role key to the browser.
 
-## Development
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-The development command starts Vite and the Express API. The API listens on `PORT` (default 3000).
-
-## Production
+## Production build
 
 ```bash
+npm install
 npm run build
-npm start
 ```
 
-## Supabase setup
+The Astro build writes the deployable static site to `dist/`.
 
-1. Open the existing Supabase project.
-2. Review the existing schema before applying migrations.
-3. Apply `supabase/migrations/0002_ario_scripts_security.sql` in a controlled environment first.
-4. Configure Supabase Auth email verification/password reset.
-5. Configure Google OAuth only if desired.
-6. Configure Storage buckets and owner-scoped policies for avatars, game images, script thumbnails, and announcements.
-7. Create the initial administrator manually through a trusted database procedure or controlled SQL operation. Never promote the first registered user automatically.
-8. Test anonymous, user, moderator, and administrator permissions separately.
+## Architecture
 
-## Security notes
+- **Astro:** static build and Cloudflare Pages entrypoint
+- **React:** interactive Ario Scripts application
+- **Supabase:** Auth, PostgreSQL, Storage, and RLS
+- **Express:** optional trusted API retained for server deployments; Cloudflare Pages static hosting does not run Express.
 
-- Browser code uses only the Supabase publishable key.
-- Private script source should be delivered only after server-side authorization.
-- User-submitted Luau is treated as untrusted content and is never executed by the web server.
-- Admin actions must be enforced on the server/database, not by hidden UI controls.
-- RLS must remain enabled on browser-exposed tables.
-- Do not expose service-role credentials, access tokens, passwords, or private moderation data.
+## Product scope
 
-## API health
+- Roblox Studio/Luau script catalog
+- Games and categories
+- Developer profiles
+- Authentication and dashboards
+- Script submissions and moderation
+- Favorites, notifications, badges, and admin tools
+- PostgreSQL/RLS persistence
 
-`GET /api/health` verifies configured Supabase connectivity without returning secrets.
+This project is for legitimate Roblox development and educational resources. It does not provide exploit loaders, anti-cheat bypasses, credential theft, or security-bypass functionality.
 
-## Status
-
-The repository contains the Ario Scripts application foundation and real Supabase-backed workflows. Before production launch, run the project in Replit, apply and test the database migration against a controlled environment, configure Storage/Auth, and run the TypeScript/build checks.
+User-submitted Luau is treated as untrusted content and is never executed by the web server.
